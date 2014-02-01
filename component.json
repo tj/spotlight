@@ -1,0 +1,27 @@
+{
+  "name": "es",
+  "description": "elastic search UI",
+  "dependencies": {
+    "visionmedia/superagent": "0.16.0",
+    "component/dom": "0.9.0",
+    "component/assert": "0.3.0",
+    "component/emitter": "1.1.1",
+    "visionmedia/minstache": "1.1.0",
+    "visionmedia/elucene": "0.2.0",
+    "yields/k": "0.6.0",
+    "component/moment": "2.0.0"
+  },
+  "scripts": [
+    "index.js",
+    "client.js"
+  ],
+  "json": [
+    "config.json"
+  ],
+  "styles": [
+    "style.css"
+  ],
+  "templates": [
+    "log.html"
+  ]
+}

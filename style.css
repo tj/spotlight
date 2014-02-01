@@ -1,0 +1,87 @@
+
+* {
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 90px;
+  font: 13px "Helvetica Neue", Helvetica, sans-serif;
+  background: #22262e;
+  color: #595E69;
+}
+
+pre {
+  margin: 0;
+}
+
+header {
+  position: fixed;
+  top: -3px;
+  left: 0;
+  width: 100%;
+}
+
+input[name=query] {
+  padding: 25px;
+  font-size: 1.5em;
+  font-family: Gudea;
+  border: none;
+  width: 100%;
+  outline: none;
+  background: #white;
+  color: #434C57;
+  box-shadow: 0 0 15px black;
+}
+
+input[name=query]:focus {
+
+}
+
+#logs {
+  width: 100%;
+}
+
+#logs table {
+  border-collapse: collapse;
+}
+
+#logs > table > tbody > tr > td:first-child {
+  padding-left: 25px;
+}
+
+#logs > table > tbody > tr > td {
+  border-bottom: 1px solid #2a2e38;
+  padding: 20px 0;
+}
+
+#logs tr:hover {
+  color: #818691;
+  background: #2a2e38;
+}
+
+#logs tr:hover tr.type {
+  color: white;
+}
+
+#logs td {
+  padding: 3px 10px;
+  vertical-align: top;
+}
+
+#logs td.meta {
+  width: 290px;
+}
+
+#logs td.message {
+
+}
+
+#logs td.meta > table tr td:first-child {
+  display: none;
+}
+
+#logs tr.type {
+  color: #818691;
+}
