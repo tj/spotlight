@@ -1,2 +1,4 @@
 build/
 components/
+config.json
+.DS_Store

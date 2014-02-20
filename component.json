@@ -1,5 +1,5 @@
 {
-  "name": "es",
+  "name": "spotlight",
   "description": "elastic search UI",
   "dependencies": {
     "visionmedia/superagent": "0.16.0",
@@ -9,7 +9,9 @@
     "visionmedia/minstache": "1.1.0",
     "visionmedia/elucene": "0.2.0",
     "yields/k": "0.6.0",
-    "component/moment": "2.0.0"
+    "component/moment": "2.0.0",
+    "component/is-near-bottom": "1.0.0",
+    "component/throttle": "*"
   },
   "scripts": [
     "index.js",

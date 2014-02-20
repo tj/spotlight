@@ -3,11 +3,22 @@
  * Module dependencies.
  */
 
+var isNearBottom = require('is-near-bottom');
+var throttle = require('throttle');
 var moment = require('moment');
 var conf = require('./config');
 var ES = require('./client');
 var dom = require('dom');
 var k = require('k')(window);
+
+/**
+ * Options.
+ */
+
+var from = Date.now();
+var autoscroll = true;
+var tailing = true;
+var query = '*';
 
 // log template
 
@@ -23,25 +34,112 @@ var es = new ES({
 
 // query
 
-dom('[name=query]').on('input', function(){
-  var str = this.value.trim();
+dom('[name=query]').on('input', function(e){
+  e.stopPropagation();
+  query = this.value.trim() || '*';
   clear();
-  refresh(str);
+  disableTailing();
+  fetch();
 });
 
 /**
- * Refresh with query `str`.
+ * Fetch and append logs.
  */
 
-function refresh(str) {
-  var query = es.query(str);
+function fetch(opts) {
+  opts = opts || {};
 
-  query.on('data', function(log){
-    log.message = JSON.stringify(log.message, null, 2);
+  if (opts.range) {
+    var to = Date.now();
+    var range = ' AND timestamp:[' + from + ' TO ' + to + ']';
+    var q = es.query(query + range, { limit: 1e9 });
+    from = to;
+  } else {
+    var q = es.query(query, { limit: 1e9 });
+  }
+
+  q.on('data', function(log){
+    var msg = JSON.parse(log.message);
+    log.message = JSON.stringify(msg, null, 2);
     log.timestamp = moment(log.timestamp).format('Do h:mm:ss a');
     var el = dom(render(log));
     el.appendTo('#logs > tbody');
   });
+
+  q.on('end', function(){
+    if (autoscroll) scroll();
+  });
+}
+
+/**
+ * Toggle tailing.
+ */
+
+dom('#tail').on('click', function(e){
+  e.preventDefault();
+  toggle();
+});
+
+/**
+ * Show help.
+ */
+
+dom('#info').on('click', function(e){
+  e.preventDefault();
+  toggleHelp();
+});
+
+/**
+ * Lame query ticker.
+ */
+
+fetch({ range: true });
+setInterval(function(){
+  if (tailing) fetch({ range: true });
+}, 1000);
+
+// /**
+//  * Lame autoscrolling logic.
+//  */
+
+// window.onscroll = throttle(function(){
+//   autoscroll = isNearBottom(500);
+//   console.log(autoscroll);
+// }, 200);
+
+/**
+ * Toggle tailing.
+ */
+
+function toggleTailing() {
+  tailing = !tailing;
+  dom('#tail').toggleClass('down');
+}
+
+/**
+ * Disable tailing.
+ */
+
+function disableTailing() {
+  tailing = false;
+  dom('#tail').removeClass('down');
+}
+
+/**
+ * Toggle help display.
+ */
+
+function toggleHelp() {
+  dom('#help').toggleClass('show');
+  dom('#info').toggleClass('down');
+}
+
+/**
+ * Scroll to the bottom.
+ */
+
+function scroll() {
+  document.body.scrollTop = document.body.scrollHeight;
 }
 
 /**
@@ -52,13 +150,29 @@ function clear() {
   dom('#logs > tbody > tr').remove();
 }
 
-// bind "s" to focus input
+/**
+ * Bind "s" to the search input.
+ */
 
 k('s', function(e){
   e.preventDefault();
-  dom('[name=query]')[0].focus();
+  dom('[name=query]').get(0).focus();
 });
 
-// initialize
+/**
+ * Bind "t" to toggle tailing.
+ */
 
-refresh('*');
+k('t', function(e){
+  e.preventDefault();
+  toggleTailing();
+});
+
+/**
+ * Bind "h" to toggle help.
+ */
+
+k('h', function(e){
+  e.preventDefault();
+  toggleHelp();
+});

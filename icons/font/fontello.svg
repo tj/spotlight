@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="info-1" unicode="&#xe806;" d="m74 351l-56 0l0 111l335 0l0-390q0-24 17-40t39-16l55 0l0-113l-446 0l0 113l56 0q23 0 40 16t16 40l0 223q0 24-16 40t-40 16z m56 334q0 112 112 112t111-112t-111-111t-112 111z" horiz-adv-x="482" />
+<glyph glyph-name="play" unicode="&#xe800;" d="m18 797l670-446l-670-448l0 894z" horiz-adv-x="705" />
+<glyph glyph-name="chart" unicode="&#xe804;" d="m84 49c-19 0-37 7-52 19c-37 29-43 83-13 119l240 297c26 33 73 42 109 20l229-133l202 250c29 35 83 41 119 11c36-29 41-83 12-119l-247-305c-26-31-73-40-109-19l-229 133l-195-241c-17-22-41-32-66-32z" horiz-adv-x="949" />
+<glyph glyph-name="chart-bar" unicode="&#xe802;" d="m180 516l0-538l-180 0l0 538l180 0z m250-138l0-400l-180 0l0 400l180 0z m250 344l0-744l-180 0l0 744l180 0z" horiz-adv-x="680" />
+<glyph glyph-name="chart-pie" unicode="&#xe803;" d="m808 399l-332 0l0 335c184 0 332-147 332-331l0-4z m-437-105l333 0l0 4c0-184-149-332-333-332s-331 148-331 332s148 332 331 332l0-336z" horiz-adv-x="807" />
+</font>
+</defs>
+</svg>

@@ -4,11 +4,16 @@
   <title>Spotlight</title>
   <link href="//fonts.googleapis.com/css?family=Gudea&subset=latin" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="icons/css/fontello.css">
 </head>
 <body>
   <div id="ui">
     <header>
       <input type="text" name="query" placeholder="Query" />
+      <ul id="menu">
+        <li><a href="#" id="tail" class="icon-play down"></a></li>
+        <li><a href="#" id="info" class="icon-info-1"></a></li>
+      </ul>
     </header>
 
     <div id="logs">
@@ -17,8 +22,27 @@
       </table>
     </div>
 
+    <div id="help">
+      <h2>Shortcuts</h2>
+      <p>Spotlight shortcut keys.</p>
+      <ul>
+        <li><em>h</em> display this help information</li>
+        <li><em>t</em> toggle streaming log tailing</li>
+        <li><em>s</em> focus the search input</li>
+      </ul>
+
+      <hr>
+      <h2>Queries</h2>
+      <p>Spotlight query examples.</p>
+      <ul>
+        <li>level:error</li>
+        <li>some string LIMIT 20</li>
+        <li>some string LIMIT 20 FIELDS foo,bar,baz</li>
+      </ul>
+    </div>
+
     <script src="build/build.js"></script>
-    <script>require('es')</script>
+    <script>require('spotlight')</script>
   </div>
 </body>
 </html>

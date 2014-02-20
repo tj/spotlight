@@ -103,9 +103,12 @@ ES.prototype.query = function(str, opts){
     if (err) return e.emit('error', err);
     if (res.error) return e.emit('error', res.error);
     var logs = res.body.hits;
+
     logs.hits.map(normalize(query.fields)).forEach(function(log){
       e.emit('data', log);
     });
+
+    e.emit('end');
   });
 
   return e;
