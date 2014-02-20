@@ -52,10 +52,10 @@ function fetch(opts) {
   if (opts.range) {
     var to = Date.now();
     var range = ' AND timestamp:[' + from + ' TO ' + to + ']';
-    var q = es.query(query + range, { limit: 1e9 });
+    var q = es.query(query + range, { limit: 1e5 });
     from = to;
   } else {
-    var q = es.query(query, { limit: 1e9 });
+    var q = es.query(query, { limit: 1000 });
   }
 
   q.on('data', function(log){
