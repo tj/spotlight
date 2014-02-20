@@ -1,7 +1,7 @@
 {
   "name": "spotlight",
   "description": "elastic search UI",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "visionmedia/superagent": "0.16.0",
     "component/dom": "0.9.0",
